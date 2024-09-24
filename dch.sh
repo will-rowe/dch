@@ -22,8 +22,14 @@ make_absolute_path() {
     echo "$p/$d"
 }
 
-DC_PATH="$PWD"
 DC_REPO=""
+DC_PATH=""
+if [ -L "$0" ]; then
+  DC_PATH="$(cd "$(dirname "$(readlink -f "$0")")"; pwd)"
+else
+  DC_PATH="$(cd "$(dirname "$0")"; pwd)"
+fi
+
 DC_CONFIG="${DC_PATH}/devcontainer.json"
 DC_DOCKERFILE="${DC_PATH}/go.Dockerfile"
 DC_ZSHRC="${DC_PATH}/.zshrc"
