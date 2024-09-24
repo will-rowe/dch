@@ -1,0 +1,20 @@
+# DCH: Dev Container Helper
+
+Helps manage your devcontainers.
+
+## Prerequisites
+
+* Docker
+* VScode
+* VScode `code` CLI tool
+* VScode devcontainer plugin
+* Bash
+* jq
+
+## Running
+
+### start a VScode IDE using a devcontainer
+```
+dch.sh -r ./my-repo
+```
+> if the repo or devcontainer does not exist, it will create them using the defaults.

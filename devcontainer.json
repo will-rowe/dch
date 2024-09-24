@@ -1,0 +1,24 @@
+{
+	"name": "devcontainer",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=devcontainer-bashhistory,target=/commandhistory,type=volume",
+		"source=${DC_REPO},target=/mnt/${DC_REPO_NAME},type=bind"
+	],
+	"workspaceFolder": "/mnt/${DC_REPO_NAME}",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"github.vscode-github-actions"
+			],
+			"settings": {
+				"editor.tabSize": 4,
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			}
+		}
+	}
+}
