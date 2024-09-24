@@ -2,12 +2,6 @@
 set -e
 trap 'echo "An error occurred when trying to run a devcontainer. Exiting..."; exit 1;' ERR
 
-DC_PATH="$(cd "$(dirname "$0")"; pwd)"
-DC_REPO=""
-DC_CONFIG="${DC_PATH}/devcontainer.json"
-DC_DOCKERFILE="${DC_PATH}/go.Dockerfile"
-DC_ZSHRC="${DC_PATH}/.zshrc"
-
 usage() {
     echo "Usage: dch.sh -r /path/repo -d /path/custom.dockerfile"
     exit 1
@@ -27,6 +21,12 @@ make_absolute_path() {
     d=$(basename "$input_path")
     echo "$p/$d"
 }
+
+DC_PATH="$PWD"
+DC_REPO=""
+DC_CONFIG="${DC_PATH}/devcontainer.json"
+DC_DOCKERFILE="${DC_PATH}/go.Dockerfile"
+DC_ZSHRC="${DC_PATH}/.zshrc"
 
 # Parse CLI opts
 repo_required=false
